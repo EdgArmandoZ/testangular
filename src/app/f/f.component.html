@@ -1,1 +1,90 @@
-<p>f works!</p>
+<section class="body">
+    <div class="wrapper">
+    <form [formGroup]="formularioContacto" (ngSubmit)="agregarPersona()">
+        <h1>Gestion de usuarios</h1>
+        
+          <div class="input-box">
+          <input type="text"  formControlName="nombre" placeholder="Ingrese su nombre" required >
+          <i class='bx bxs-user'></i>
+        </div>
+          @if(formularioContacto.get('nombre')?.errors?.['required']){
+            <span >el nombre no puede quedar vacio</span>
+          }
+          @if(formularioContacto.get('nombre')?.errors?.['minlength']){
+            <span>Debe tener como minimo 10 caracteres</span>
+          }
+    
+        <div>
+        
+          <div class="input-box">
+          <input type="text"  formControlName="edad"  placeholder="Ingrese su edad" required>
+        </div>
+          @if(formularioContacto.get('edad')?.errors?.['required']){
+            <span>La edad no puede quedar vacia</span>
+          }
+          @if(formularioContacto.get('edad')?.errors?.['minlength']){
+            <span >debe ser mayor que 0</span>
+          }
+        </div>
+    
+        
+        <div>
+        
+          <div class="input-box">
+          <input type="text" formControlName="DPI"  placeholder="Ingrese su DPI" required>
+          <i class='bx bx-id-card'></i>
+          </div>
+          @if(formularioContacto.get('DPI')?.errors?.['required']){
+            <span >El DPI no puede quedar vacio</span>
+          }
+          @if(formularioContacto.get('DPI')?.errors?.['minlength']){
+            <span>Debe tener como minimo 13 caracteres</span>
+          }
+        </div>
+        <button type="submit" class="btn">Agregar</button>
+    
+      </form>
+      
+    </div>
+    
+      <hr>
+<section class="wrappero" >
+ 
+  <h2 class="titulo">Lista de personas</h2>
+  <ul class="flex-container">
+    <div id="flex">
+    <li>
+      <div>
+        <div class="names">
+          Nombre
+        </div>
+        <div class="names">
+          Edad
+        </div>
+        <div class="names">
+          DPI
+        </div>
+        <div>
+          
+        </div>
+      </div>
+    </li>
+  </div>
+
+    
+    @for(persona of listaPersonas; track $index) {
+      <li class="datos-recolectados">
+        <div class="flex2" >
+      <div class="names2">{{persona.nombre}}</div>
+      <div class="names2">{{persona.edad}}</div>
+      <div class="names2">{{persona.DPI}}</div>
+     <div>
+      <button class="btnBorrar" (click)="borrarPersona1($index)" >Eliminar</button>
+     </div>
+      
+    </div>
+  </li>
+    }
+
+  </ul>
+</section>
