@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { FComponent } from './f/f.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [FComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
